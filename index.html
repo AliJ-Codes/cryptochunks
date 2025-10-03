@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptochunks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🔐 Cryptochunks</h1>
+            <p class="subtitle">End-to-end file encryption without server storage</p>
+        </header>
+
+        <div class="main-content">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="encrypt">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0110 0v4"></path>
+                    </svg>
+                    Encrypt
+                </button>
+                <button class="tab-btn" data-tab="decrypt">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 019.9-1"></path>
+                    </svg>
+                    Decrypt
+                </button>
+            </div>
+            <div class="tab-content active" id="encrypt-tab">
+                <div class="upload-area" id="encrypt-upload">
+                    <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p class="upload-text">Drop file here or click to browse</p>
+                    <p class="upload-hint">Your file will be encrypted client-side</p>
+                    <input type="file" id="encrypt-file-input" hidden>
+                </div>
+                
+                <div class="password-section">
+                    <label for="encrypt-password">Encryption Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="encrypt-password" placeholder="Enter a strong password">
+                        <button class="toggle-password" data-target="encrypt-password">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="action-btn" id="encrypt-btn" disabled>
+                    <span class="btn-text">Encrypt File</span>
+                    <div class="spinner"></div>
+                </button>
+            </div>
+            <div class="tab-content" id="decrypt-tab">
+                <div class="upload-area" id="decrypt-upload">
+                    <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p class="upload-text">Drop encrypted file here or click to browse</p>
+                    <p class="upload-hint">Only .enc files are accepted</p>
+                    <input type="file" id="decrypt-file-input" accept=".enc" hidden>
+                </div>
+                
+                <div class="password-section">
+                    <label for="decrypt-password">Decryption Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="decrypt-password" placeholder="Enter the password used for encryption">
+                        <button class="toggle-password" data-target="decrypt-password">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="action-btn" id="decrypt-btn" disabled>
+                    <span class="btn-text">Decrypt File</span>
+                    <div class="spinner"></div>
+                </button>
+            </div>
+        </div>
+        <div class="progress-container" id="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="progress-text" id="progress-text">0%</span>
+        </div>
+        <div class="log-section">
+            <div class="log-header">
+                <h3>📋 Activity Log</h3>
+                <button class="clear-log-btn" id="clear-log">Clear</button>
+            </div>
+            <div class="log-container" id="log-container">
+                <div class="log-entry info">
+                    <span class="log-time">00:00:00</span>
+                    <span class="log-message">System ready. No files are stored on server.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
